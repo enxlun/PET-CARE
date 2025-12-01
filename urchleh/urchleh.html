@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Үрчлэх - Pet Rescue Mongolia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="adopt-page">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Төгс хамтрагчаа олоорой</h1>
+                <p>Мөнх гэрээ хайж байгаа гайхамшигтай амьтдыг үзээрэй. Тэд бүгд асрагдаж, танай гэр бүлд баяр хөөр авчрахад бэлэн байна.</p>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <div class="filter-grid">
+                    <div class="input-wrapper">
+                        <svg class="search-icon icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="Нэр эсвэл үүлдрээр хайх...">
+                    </div>
+                    <select id="typeFilter">
+                        <option value="all">Бүх төрөл</option>
+                        <option value="Нохой">Нохой</option>
+                        <option value="Муур">Муур</option>
+                    </select>
+                    <select id="ageFilter">
+                        <option value="all">Бүх нас</option>
+                        <option value="young">2-оос доош нас</option>
+                        <option value="adult">2-5 нас</option>
+                        <option value="senior">5-аас дээш нас</option>
+                    </select>
+                    <select id="locationFilter">
+                        <option value="all">Бүх байршил</option>
+                        <option value="Улаанбаатар">Улаанбаатар</option>
+                        <option value="Дархан">Дархан</option>
+                        <option value="Эрдэнэт">Эрдэнэт</option>
+                        <option value="Чойбалсан">Чойбалсан</option>
+                        <option value="Ховд">Ховд</option>
+                        <option value="Мөрөн">Мөрөн</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Results Header -->
+            <div class="results-header">
+                <p class="results-count">Өрхжүүлэх боломжтой <span id="resultCount">6</span> амьтан харагдаж байна</p>
+                <button class="filter-button">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                    </svg>
+                    Нэмэлт шүүлтүүр
+                </button>
+            </div>
+
+            <!-- Pet Grid -->
+            <div class="pet-grid" id="petGrid"></div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <h3>Өрхжүүлэхэд бэлэн үү?</h3>
+                <p>Манай өрхжүүлэх үйл явц нь амьтан болон гэр бүлийн хооронд төгс тохирол олоход зориулагдсан. Өнөөдөр эхэлээрэй!</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large">Өрхжүүлэх үйл явц эхлүүлэх</button>
+                    <button class="btn btn-outline btn-large">Өрхжүүлэх талаар мэдэх</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

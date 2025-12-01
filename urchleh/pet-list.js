@@ -133,3 +133,11 @@ document.getElementById('locationFilter').addEventListener('change', filterPets)
 
 // Initial render
 renderPets();
+
+// --- TYPE SWITCH LOGIC ---
+const typeSwitch = document.getElementById("mySwitch");
+
+typeSwitch.addEventListener("change", () => {
+    const typeFilterValue = typeSwitch.checked ? "Муур" : "Нохой";
+    filterPets(typeFilterValue);
+});

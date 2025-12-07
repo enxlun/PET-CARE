@@ -4,7 +4,354 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Үрчлэх - Pet Rescue Mongolia</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #F4D03F;
+            --primary-foreground: #1B2631;
+            --secondary: #7DCEA0;
+            --secondary-foreground: #1B2631;
+            --background: #fefdfb;
+            --foreground: #262626;
+            --card: #ffffff;
+            --muted-foreground: #717182;
+            --border: rgba(0, 0, 0, 0.1);
+            --radius: 10px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            background: var(--background);
+            color: var(--foreground);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Page Layout */
+        .adopt-page {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, 
+                rgba(244, 208, 63, 0.08), 
+                rgba(125, 206, 160, 0.05), 
+                var(--background));
+            min-height: 100vh;
+        }
+
+        /* Header Section */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--foreground);
+        }
+
+        .page-header p {
+            font-size: 1.125rem;
+            color: var(--muted-foreground);
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(125, 206, 160, 0.2);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted-foreground);
+            pointer-events: none;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.625rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: white;
+            font-size: 0.875rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(125, 206, 160, 0.1);
+        }
+
+        input[type="text"] {
+            padding-left: 2.5rem;
+        }
+
+        /* Results Header */
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .results-count {
+            color: var(--muted-foreground);
+        }
+
+        .filter-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .filter-button:hover {
+            background: rgba(244, 208, 63, 0.1);
+        }
+
+        /* Pet Grid */
+        .pet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .pet-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .pet-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .pet-image-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            overflow: hidden;
+        }
+
+        .pet-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .favorite-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.1);
+        }
+
+        .favorite-btn.active {
+            color: #e74c3c;
+        }
+
+        .pet-content {
+            padding: 1rem;
+        }
+
+        .pet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .pet-name {
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            background: rgba(125, 206, 160, 0.2);
+            color: var(--secondary-foreground);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .pet-breed {
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            margin-bottom: 0.5rem;
+        }
+
+        .pet-location {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+            margin-bottom: 0.75rem;
+        }
+
+        .pet-description {
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.625rem 1rem;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--primary-foreground);
+        }
+
+        .btn-primary:hover {
+            background: #f0c829;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(to right, 
+                rgba(244, 208, 63, 0.2), 
+                rgba(125, 206, 160, 0.2));
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-section h3 {
+            font-size: 1.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: var(--muted-foreground);
+            margin-bottom: 1.5rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-large {
+            padding: 0.875rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+        }
+
+        .btn-outline:hover {
+            background: var(--secondary);
+            color: var(--secondary-foreground);
+        }
+
+        /* Icons */
+        .icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pet-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="adopt-page">
@@ -60,7 +407,9 @@
             </div>
 
             <!-- Pet Grid -->
-            <div class="pet-grid" id="petGrid"></div>
+            <div class="pet-grid" id="petGrid">
+                <!-- Pet cards will be inserted here by JavaScript -->
+            </div>
 
             <!-- CTA Section -->
             <div class="cta-section">
@@ -74,6 +423,176 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Pet data
+        const allPets = [
+            {
+                id: 1,
+                name: "Найз",
+                type: "Нохой",
+                breed: "Алтан авирагч холимог",
+                age: "3 нас",
+                ageNum: 3,
+                location: "Улаанбаатар",
+                image: "https://images.unsplash.com/photo-1755426225487-62bb981301b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnb2xkZW4lMjByZXRyaWV2ZXIlMjBwYXN0ZWwlMjBzdHVkaW8lMjBwb3J0cmFpdHxlbnwxfHx8fDE3NTkxMTQ2ODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+                description: "Найрсаг, эрч хүчтэй нохой идэвхтэй гэр бүлийг хайж байна."
+            },
+            {
+                id: 2,
+                name: "Сар",
+                type: "Муур",
+                breed: "Гэрийн богино үстэй",
+                age: "2 нас",
+                ageNum: 2,
+                location: "Дархан",
+                image: "https://images.unsplash.com/photo-1544338673-d2efa1abb8d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYXQlMjBwb3J0cmFpdCUyMGNsZWFuJTIwYmFja2dyb3VuZCUyMG1pbmltYWxpc3R8ZW58MXx8fHwxNzU5MTE0Njg1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+                description: "Эгдүүтэй, тэврэлдэг муур, аашлах, тоглохдоо дуртай."
+            },
+            {
+                id: 3,
+                name: "Макс",
+                type: "Нохой",
+                breed: "Хил колли",
+                age: "5 нас",
+                ageNum: 5,
+                location: "Эрдэнэт",
+                image: "https://images.unsplash.com/photo-1738109336833-c7560bd44d7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGRvZyUyMGFkb3B0aW9ufGVufDF8fHx8MTc1OTExMzE1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+                description: "Ухаантай, үнэнч хамтрагч, гадаа аялалд төгс тохирно."
+            },
+            {
+                id: 4,
+                name: "Гоо",
+                type: "Муур",
+                breed: "Перс холимог",
+                age: "1 нас",
+                ageNum: 1,
+                location: "Чойбалсан",
+                image: "https://images.unsplash.com/photo-1570824104967-27599c232b4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXRlJTIwY2F0JTIwYWRvcHRpb258ZW58MXx8fHwxNzU5MTA0MTE2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+                description: "Тоглоомон залуу муур, үзэсгэлэнтэй урт үстэй."
+            },
+            {
+                id: 5,
+                name: "Чарли",
+                type: "Нохой",
+                breed: "Лабрадор холимог",
+                age: "4 нас",
+                ageNum: 4,
+                location: "Ховд",
+                image: "https://images.unsplash.com/photo-1738109336833-c7560bd44d7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGRvZyUyMGFkb3B0aW9ufGVufDF8fHx8MTc1OTExMzE1M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+                description: "Эелдэг том нохой, хүүхдүүдэд дуртай, бөмбөг барих тоглоом дуртай."
+            },
+            {
+                id: 6,
+                name: "Мило",
+                type: "Муур",
+                breed: "Судалтай",
+                age: "6 нас",
+                ageNum: 6,
+                location: "Мөрөн",
+                image: "https://images.unsplash.com/photo-1570824104967-27599c232b4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXRlJTIwY2F0JTIwYWRvcHRpb258ZW58MXx8fHwxNzU5MTA0MTE2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+                description: "Тайван, хайрхам өндөр настай муур, нам гүм гэрийг хайж байна."
+            }
+        ];
+
+        let filteredPets = [...allPets];
+        const favorites = new Set();
+
+        // Create pet card HTML
+        function createPetCard(pet) {
+            return `
+                <div class="pet-card" data-pet-id="${pet.id}">
+                    <div class="pet-image-wrapper">
+                        <img src="${pet.image}" alt="${pet.name}" class="pet-image">
+                        <button class="favorite-btn ${favorites.has(pet.id) ? 'active' : ''}" data-pet-id="${pet.id}">
+                            <svg class="icon" fill="${favorites.has(pet.id) ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="pet-content">
+                        <div class="pet-header">
+                            <h3 class="pet-name">${pet.name}</h3>
+                            <span class="badge">${pet.type}</span>
+                        </div>
+                        <p class="pet-breed">${pet.breed} • ${pet.age}</p>
+                        <div class="pet-location">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            ${pet.location}
+                        </div>
+                        <p class="pet-description">${pet.description}</p>
+                        <button class="btn btn-primary">Дэлгэрэнгүй</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render pet grid
+        function renderPets() {
+            const petGrid = document.getElementById('petGrid');
+            petGrid.innerHTML = filteredPets.map(pet => createPetCard(pet)).join('');
+            document.getElementById('resultCount').textContent = filteredPets.length;
+
+            // Add favorite button listeners
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                btn.addEventListener('click', toggleFavorite);
+            });
+        }
+
+        // Toggle favorite
+        function toggleFavorite(e) {
+            e.stopPropagation();
+            const petId = parseInt(e.currentTarget.dataset.petId);
+            
+            if (favorites.has(petId)) {
+                favorites.delete(petId);
+            } else {
+                favorites.add(petId);
+            }
+            
+            renderPets();
+        }
+
+        // Filter pets
+        function filterPets() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const typeFilter = document.getElementById('typeFilter').value;
+            const ageFilter = document.getElementById('ageFilter').value;
+            const locationFilter = document.getElementById('locationFilter').value;
+
+            filteredPets = allPets.filter(pet => {
+                // Search filter
+                const matchesSearch = pet.name.toLowerCase().includes(searchTerm) || 
+                                    pet.breed.toLowerCase().includes(searchTerm);
+
+                // Type filter
+                const matchesType = typeFilter === 'all' || pet.type === typeFilter;
+
+                // Age filter
+                let matchesAge = true;
+                if (ageFilter === 'young') matchesAge = pet.ageNum <= 2;
+                else if (ageFilter === 'adult') matchesAge = pet.ageNum > 2 && pet.ageNum <= 5;
+                else if (ageFilter === 'senior') matchesAge = pet.ageNum > 5;
+
+                // Location filter
+                const matchesLocation = locationFilter === 'all' || pet.location === locationFilter;
+
+                return matchesSearch && matchesType && matchesAge && matchesLocation;
+            });
+
+            renderPets();
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', filterPets);
+        document.getElementById('typeFilter').addEventListener('change', filterPets);
+        document.getElementById('ageFilter').addEventListener('change', filterPets);
+        document.getElementById('locationFilter').addEventListener('change', filterPets);
+
+        // Initial render
+        renderPets();
+    </script>
 </body>
 </html>

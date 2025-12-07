@@ -28,9 +28,10 @@ body {
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+    width: 100%;
+    max-width: 90rem; /* 1440px */
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 3vw, 2rem);
 }
 
 @media (min-width: 640px) {
@@ -71,10 +72,9 @@ header .container {
     color: var(--foreground);
 }
 
-.logo svg {
+.logo-image {
     width: 32px;
     height: 32px;
-    color: var(--primary);
 }
 
 .logo span {
@@ -536,9 +536,17 @@ nav button.active {
 
 /* Footer Styles */
 footer {
+    width: 100%;
     background: rgba(236, 236, 240, 0.5);
     border-top: 1px solid var(--border);
     padding: 3rem 0;
+}
+
+.footer-container {
+    max-width: 1200px; 
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;   
 }
 
 .footer-grid {

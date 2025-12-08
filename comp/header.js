@@ -28,8 +28,8 @@ class Header extends HTMLElement {
                 <div class="tooltip-content">Хадгалсан амьтад</div>
               </div>
 
-              <button class="btn btn-ghost hide-mobile">Нэвтрэх</button>
-              <button class="btn btn-primary">Бүртгүүлэх</button>
+              <button onclick="window.location.href='../login/login.html'" class="btn btn-ghost hide-mobile">Нэвтрэх</button>
+              <button onclick="window.location.href='../login/register.html'" class="btn btn-primary">Бүртгүүлэх</button>
 
               <button class="btn btn-ghost btn-icon mobile-menu-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

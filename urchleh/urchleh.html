@@ -4,38 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Үрчлэх - Pet Rescue Mongolia</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <script src="../comp/donatebutton.js"></script>
+    <script src="../comp/footer.js"></script>
+    <script src="../comp/header.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #F4D03F;
-            --primary-foreground: #1B2631;
-            --secondary: #7DCEA0;
-            --secondary-foreground: #1B2631;
-            --background: #fefdfb;
-            --foreground: #262626;
-            --card: #ffffff;
-            --muted-foreground: #717182;
-            --border: rgba(0, 0, 0, 0.1);
-            --radius: 10px;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-            background: var(--background);
-            color: var(--foreground);
-            line-height: 1.5;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
 
         /* Page Layout */
         .adopt-page {
@@ -352,7 +328,7 @@
             }
         }
     </style>
-    <script src="../comp/footer.js"></script>
+   
     <link rel="stylesheet" href="../styles.css">
     <script src="../comp/header.js"></script>
 </head>
@@ -427,6 +403,7 @@
         </div>
     </div>
     <site-footer></site-footer>
+    <donate-button></donate-button>
     <script>
         // Pet data
         const allPets = [
@@ -598,5 +575,6 @@
         // Initial render
         renderPets();
     </script>
+
 </body>
 </html>

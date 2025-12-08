@@ -10,7 +10,7 @@ class Header extends HTMLElement {
         <header>
           <div class="container">
             <a href="#" class="logo">
-              <img src="svg/logo.svg" alt="Амьтад Аврах Лого" class="logo-image">
+              <img src="/svg/logo.svg" alt="Амьтад Аврах Лого" class="logo-image">
               <span>Савархан</span>
             </a>
             <nav>

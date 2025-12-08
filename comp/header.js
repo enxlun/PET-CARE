@@ -9,13 +9,13 @@ class Header extends HTMLElement {
         this.innerHTML = /*html*/ `
         <header>
           <div class="container">
-            <a href="#" class="logo">
-              <img src="svg/logo.svg" alt="Амьтад Аврах Лого" class="logo-image">
+            <a href="../index.html" class="logo">
+              <img src="/svg/logo.svg" alt="Амьтад Аврах Лого" class="logo-image">
               <span>Савархан</span>
             </a>
             <nav>
-              <button onclick="navigateTo('services')">Арчлах</button>
-              <button onclick="navigateTo('adopt')">Үрчлэх</button>
+              <button onclick="window.location.href='../archlah/archlah.html'">Арчлах</button>
+              <button onclick="window.location.href='../urchleh/urchleh.html'">Үрчлэх</button>
             </nav>
 
             <div class="header-actions">

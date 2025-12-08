@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Хандив өгөх - Амьтад Аврах</title>
   <script src="handiv.js"></script>
+   <script src="../comp/header.js"></script>
   <style>
     * {
       margin: 0;
@@ -702,42 +703,7 @@
 </head>
 <body>
   <!-- Header -->
-  <header>
-    <div class="container">
-      <a href="index.html" class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
-        <span>Амьтад Аврах</span>
-      </a>
-
-      <nav>
-        <button onclick="navigateTo('services')">Арчлах</button>
-        <button onclick="navigateTo('adopt')">Үрчлэх</button>
-        <button onclick="navigateTo('donate')" class="active">Хандив</button>
-      </nav>
-
-      <div class="header-actions">
-        <div class="tooltip">
-          <button class="btn btn-ghost btn-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#7DCEA0" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-          </button>
-          <div class="tooltip-content">Хадгалсан амьтад</div>
-        </div>
-
-        <button class="btn btn-ghost hide-mobile">Нэвтрэх</button>
-        <button class="btn btn-primary">Бүртгүүлэх</button>
-
-        <button class="btn btn-ghost btn-icon mobile-menu-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
+  <site-header></site-header>
 
   <!-- Main Content -->
   <main class="main-content">

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Амьтан аврах - Pet Rescue Mongolia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <!-- Logo -->
+                <button class="logo-btn" onclick="navigateTo('home')">
+                    <div class="logo-icon">🐾</div>
+                    <span class="logo-text">Амьтан аврах</span>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <div class="desktop-nav">
+                    <button class="nav-link" id="nav-urchleh" onclick="navigateTo('urchleh')">үрчлэх</button>
+                    <button class="nav-link" id="nav-archlah" onclick="navigateTo('archlah')">арчлах</button>
+
+                    <!-- Saved Pets -->
+                    <div class="saved-pets-container">
+                        <button class="saved-pets-btn">
+                            <svg class="heart-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                            <span class="saved-count">3</span>
+                        </button>
+                        <div class="saved-tooltip">хадгалсан амьтад</div>
+                    </div>
+
+                    <!-- Auth Buttons -->
+                    <button class="auth-link">Нэвтрэх</button>
+                    <button class="auth-btn">Бүртгүүлэх</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg class="menu-icon" id="menu-open" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <svg class="menu-icon hidden" id="menu-close" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu hidden" id="mobile-menu">
+            <div class="mobile-menu-content">
+                <button class="mobile-nav-link" onclick="navigateTo('urchleh')">үрчлэх</button>
+                <button class="mobile-nav-link" onclick="navigateTo('archlah')">арчлах</button>
+                <div class="mobile-saved">
+                    <span>хадгалсан амьтад</span>
+                    <div class="mobile-saved-icon">
+                        <svg class="heart-icon" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                        <span class="mobile-saved-count">3</span>
+                    </div>
+                </div>
+                <hr class="mobile-divider">
+                <button class="mobile-auth-link">Нэвтрэх</button>
+                <button class="mobile-auth-btn">Бүртгүүлэх</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content"></main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">🐾</div>
+                        <span class="logo-text">Амьтан аврах</span>
+                    </div>
+                    <p class="footer-desc">Амьтдыг аврах, өрөвдөх, үрчлэх - бид хамтдаа илүү сайн ирээдүйг бүтээе.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Холбоосууд</h3>
+                    <ul class="footer-links">
+                        <li><button onclick="navigateTo('home')">Нүүр</button></li>
+                        <li><button onclick="navigateTo('urchleh')">Үрчлэх</button></li>
+                        <li><button onclick="navigateTo('archlah')">Арчлах</button></li>
+                        <li><button onclick="navigateTo('donate')">Хандив</button></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Холбоо барих</h3>
+                    <ul class="footer-contact">
+                        <li>📞 +976 8888-8888</li>
+                        <li>📧 info@petrescue.mn</li>
+                        <li>📍 Улаанбаатар, Монгол</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Дагах</h3>
+                    <div class="social-links">
+                        <button class="social-btn">FB</button>
+                        <button class="social-btn">IG</button>
+                        <button class="social-btn">TW</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2025 Амьтан аврах. Бүх эрх хуулиар хамгаалагдсан.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Donate Button -->
+    <button class="floating-donate-btn" id="floating-donate" onclick="navigateTo('donate')">
+        <span class="donate-heart">❤️</span>
+        <span>Хандив өгөх</span>
+    </button>
+
+    <script src="app.js"></script>
+</body>
+</html>

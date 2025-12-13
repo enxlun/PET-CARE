@@ -25,10 +25,10 @@ class Footer extends HTMLElement {
             <div class="footer-section">
             <h4>Хурдан холбоос</h4>
             <ul>
-                <li><a href="#adopt">Амьтан өрхжүүлэх</a></li>
-                <li><a href="#services">Үйлчилгээ</a></li>
+                <li><a href="#urchleh">Амьтан өрхжүүлэх</a></li>
+                <li><a href="#archlah">Үйлчилгээ</a></li>
                 <li><a href="#volunteer">Сайн дурынхан</a></li>
-                <li><a href="#foster">Түр асаргаа</a></li>
+                <li><a href="#archlah">Түр асаргаа</a></li>
             </ul>
             </div>
 

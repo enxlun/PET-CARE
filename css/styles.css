@@ -38,7 +38,7 @@
 }
 
 :root {
-    --background: #fefdfb;
+    --background: #fffbee;
     --foreground: #252525;
     --card: #ffffff;
     --card-foreground: #252525;
@@ -54,7 +54,11 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background-color: var(--background);
+    background:
+      radial-gradient(circle at top left, rgba(244, 208, 63, 0.25), transparent 45%),
+      radial-gradient(circle at bottom right, rgba(125, 206, 160, 0.25), transparent 45%),
+      linear-gradient(180deg, #FFFDF5, #FFF8E1);
+    color: var(--foreground);
     color: var(--foreground);
     line-height: 1.5;
     font-size: 16px;

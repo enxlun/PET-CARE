@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Амьтад Аврах - Амьтанд Хоёр дахь боломж олгоцгооё</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <script src="../comp/tbb-card.js"></script>
+  <script src="../comp/handiv_medee.js"></script>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1>Амьтанд <span class="highlight">Хоёр дахь боломж</span> олгоцгооё</h1>
+          <p>
+            Амьтан бүр хайр дүүрэн гэр бүлийг хүлээдэг. Үрчлэх боломжтой амьтдыг үзэж өөрийн төгс хамтрагчаа олоорой эсвэл тусламж хэрэгтэй амьтдад туслах үйлчилгээтэй танилцаарай.
+          </p>
+          <div class="hero-buttons">
+            <button class="btn btn-primary btn-lg" onclick="navigateTo('urchleh.html')">Амьтдыг үзэх</button>
+            <button class="btn btn-outline btn-lg" onclick="navigateTo('archlah.html')">Дэлгэрэнгүй</button>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <div class="hero-image-wrapper">
+            <img src="imgs/mainph.png" alt="Хайртай амьтад" width="800px">
+          </div>
+          <div class="hero-blur-1"></div>
+          <div class="hero-blur-2"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preview Section -->
+  <section class="preview-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Бид хэрхэн тусалдаг</h2>
+        <p>Аврагдсан амьтдын амьдралд та хэрхэн өөрчлөлт оруулж чадахаа олж мэдээрэй.</p>
+      </div>
+
+      <div class="preview-grid">
+        <!-- Adopt Preview Card -->
+        <div class="card" onclick="navigateTo('adopt')">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1755426225487-62bb981301b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800" alt="Adopt a pet">
+            <div class="card-overlay card-overlay-primary"></div>
+            <div class="card-overlay-content">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              <h3>Хамтрагчаа олоорой</h3>
+              <p>Үрчлэх боломжтой амьтдыг үзэх</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Амьтан Үрчлэх</h3>
+              <button class="btn btn-outline-primary btn-sm">Бүгдийг үзэх</button>
+            </div>
+            <p class="card-description">
+              Аврагдсан амьтанд мөнх гэрээ өгөөрэй. Хайрт гэр бүлээ хүлээж байгаа гайхамшигтай амьтдыг үзээрэй.
+            </p>
+          </div>
+        </div>
+
+        <!-- Services Preview Card -->
+        <div class="card" onclick="navigateTo('services')">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1719464454959-9cf304ef4774?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=800" alt="Pet rescue services">
+            <div class="card-overlay card-overlay-secondary"></div>
+            <div class="card-overlay-content">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <h3>Манай үйлчилгээ</h3>
+              <p>Иж бүрэн амьтны асаргаа</p>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Үйлчилгээ ба дэмжлэг</h3>
+              <button class="btn btn-outline-secondary btn-sm">Дэлгэрэнгүй</button>
+            </div>
+            <p class="card-description">
+              Малын эмнэлгийн тусламжаас эхлээд сайн дурынхны хөтөлбөр хүртэл, амьтад болон тэдний гэр бүлд хэрхэн дэмжлэг үзүүлдгийг олж мэдээрэй.
+            </p>
+          </div>
+        </div>
+      </div>
+
+<!-- Status Section -->
+
+<div class="stats-cards">
+    <tbb-card
+      image="imgs/svg/savar.svg"
+      title="Аврагдсан амьтад"
+      number="500+"></tbb-card>
+
+    <tbb-card
+      image="imgs/svg/dusal.svg"
+      title="Хандивыг босгосон"
+      number="2 сая ₮"></tbb-card>
+
+    <tbb-card
+      image="imgs/svg/humuus.svg"
+      title="Идэвхтэй сайн дурынхан"
+      number="50+"></tbb-card>
+</div>
+
+<!-- Donation news -->
+
+<donation-card
+  title="Азтай савар ТББ"
+  description="Азтай савар ТББ-т 15 нохойн 2 сарын хүнсний хэрэглээг хангаж өгөх тусламжийн…"
+  date="2025.10.10"
+  tag="Хандив"
+  time="4 минут"
+  views="570"
+  image="imgs/donation_img/donation-i1.png">
+</donation-card>
+
+
+</body>
+</html>

@@ -4,20 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Арчлах үйлчилгээ - Амьтад Аврах</title>
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-  <script src="../comp/donatebutton.js"></script>
-  <script src="../comp/header.js"></script>
-  <script src="../comp/footer.js"></script>
   <style>
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Nunito', sans-serif;
-    }
     /* Service Card */
     .service-card {
       background: rgba(255, 255, 255, 0.5);
@@ -280,148 +271,9 @@
       font-size: 1.125rem;
       min-width: 200px;
     }
-
-    /* Footer Styles */
-    footer {
-      background: rgba(236, 236, 240, 0.5);
-      border-top: 1px solid var(--border);
-      padding: 3rem 0;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .footer-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .footer-section {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .footer-logo svg {
-      width: 24px;
-      height: 24px;
-      color: var(--primary);
-    }
-
-    .footer-logo span {
-      font-size: 1.125rem;
-      font-weight: 600;
-    }
-
-    .footer-section h4 {
-      font-weight: 600;
-    }
-
-    .footer-section ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .footer-section a {
-      color: var(--muted-foreground);
-      text-decoration: none;
-      font-size: 0.875rem;
-      transition: color 0.2s;
-    }
-
-    .footer-section a:hover {
-      color: var(--foreground);
-    }
-
-    .footer-contact {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .footer-contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.875rem;
-      color: var(--muted-foreground);
-    }
-
-    .footer-contact-item svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-      text-align: center;
-      font-size: 0.875rem;
-      color: var(--muted-foreground);
-    }
-
-    /* Floating Donate Button */
-    .floating-donate {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 1000;
-    }
-
-    .floating-donate-btn {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: var(--primary-foreground);
-      border: none;
-      border-radius: 9999px;
-      padding: 1rem 1.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(244, 208, 63, 0.4);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: transform 0.2s, box-shadow 0.2s;
-      animation: pulse 2s infinite;
-    }
-
-    .floating-donate-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 35px rgba(244, 208, 63, 0.5);
-    }
-
-    .floating-donate-btn svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
-    }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <site-header></site-header>
-
   <!-- Main Content -->
   <main class="main-content">
     <div class="container">
@@ -499,13 +351,7 @@
       </div>
     </div>
   </main>
-
-  <!-- Footer -->
-  <site-footer></site-footer>
-
-  <!-- Floating Donate Button -->
-  <donate-button></donate-button>
-
+  
   <script src="archlah.js"></script>
 </body>
 </html>

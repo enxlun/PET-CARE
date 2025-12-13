@@ -4,24 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Хандив өгөх - Амьтад Аврах</title>
-  <script src="handiv.js"></script>
-   <script src="../comp/header.js"></script>
-   <script src="../comp/footer.js"></script>
-   <link rel="stylesheet" href="../styles.css">
+   <link rel="stylesheet" href="../css/styles.css">
    <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
   <style>
- 
-
     /* Main Content */
     .main-content {
       padding: 5rem 0;
       background: linear-gradient(180deg, rgba(244, 208, 63, 0.05), rgba(125, 206, 160, 0.08), var(--background));
       min-height: calc(100vh - 64px);
     }
-
-
 
     /* Donation Grid */
     .donation-grid {
@@ -376,98 +369,6 @@
       color: var(--muted-foreground);
     }
 
-    /* Footer Styles */
-    footer {
-      background: rgba(236, 236, 240, 0.5);
-      border-top: 1px solid var(--border);
-      padding: 3rem 0;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .footer-grid {
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .footer-section {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .footer-logo svg {
-      width: 24px;
-      height: 24px;
-      color: var(--primary);
-    }
-
-    .footer-logo span {
-      font-size: 1.125rem;
-      font-weight: 600;
-    }
-
-    .footer-section h4 {
-      font-weight: 600;
-    }
-
-    .footer-section ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .footer-section a {
-      color: var(--muted-foreground);
-      text-decoration: none;
-      font-size: 0.875rem;
-      transition: color 0.2s;
-    }
-
-    .footer-section a:hover {
-      color: var(--foreground);
-    }
-
-    .footer-contact {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .footer-contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.875rem;
-      color: var(--muted-foreground);
-    }
-
-    .footer-contact-item svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-      text-align: center;
-      font-size: 0.875rem;
-      color: var(--muted-foreground);
-    }
-
     /* Icon Styles */
     .icon-sm {
       width: 16px;
@@ -476,9 +377,6 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <site-header></site-header>
-
   <!-- Main Content -->
   <main class="main-content">
     <div class="container">
@@ -706,9 +604,6 @@
       </div>
     </div>
   </main>
-
-  <!-- Footer -->
-<site-footer></site-footer>
 
   <script src="donate.js"></script>
 </body>

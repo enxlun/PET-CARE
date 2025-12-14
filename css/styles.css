@@ -5,37 +5,94 @@
      font-family: 'Nunito', sans-serif;
 }
 /*Login */
-.auth-box {
-  width: 320px;
-  margin: 80px auto;
-  background: #fff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+.minii {
+  margin: 0;
   font-family: "Nunito", sans-serif;
+  background: linear-gradient(135deg, #fff6d6, #fde68a);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.auth-box input {
+.auth-wrapper {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  max-width: 360px;
+}
+.auth-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  animation: fadeIn 0.4s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.auth-card h2 {
+  margin-bottom: 1.2rem;
+  font-size: 24px;
+}
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
   font-size: 15px;
 }
-.primary-btn {
+.auth-card input:focus {
+  outline: none;
+  border-color: #facc15;
+}
+.auth-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+.auth-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.auth-options a {
+  color: #fbbf24;
+  text-decoration: none;
+}
+.auth-options a:hover {
+  text-decoration: underline;
+}
+.auth-card button {
   width: 100%;
-  padding: 10px;
-  background: #F4D03F;
+  padding: 12px;
+  background: #facc15;
   border: none;
-  border-radius: 6px;
+  border-radius: 10px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  font-size: 16px;
 }
-.auth-box p {
-  margin-top: 10px;
-  text-align: center;
+.auth-card button:hover {
+  background: #fbbf24;
 }
+.switch {
+  text-align: left;
+  margin-top: 14px;
+  line-height: 1.6;  
+  font-size: 14px;
+  white-space: nowrap;
+}
+.switch a {
+  color: #fbbf24;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
 
 :root {
     --background: #fffbee;

@@ -3,17 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <title>Нэвтрэх</title>
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
-<body>
-  <div class="auth-box">
+<body class="minii">
+<div class="auth-wrapper">
+  <div class="auth-card">
     <h2>Нэвтрэх</h2>
-    <input type="email" placeholder="Имэйл">
-    <input type="password" placeholder="Нууц үг">
-    <button class="primary-btn">Нэвтрэх</button>
-    <p>Бүртгэлгүй юу?
+    <input type="email" id="email" placeholder="Имэйл">
+    <input type="password" id="password" placeholder="Нууц үг">
+    <div class="auth-options">
+      <label>
+        <input type="checkbox" id="rememberMe">
+        Намайг сана
+      </label>
+      <a href="forgot.html">Нууц үгээ мартсан уу?</a>
+    </div>
+    <button onclick="login()">Нэвтрэх</button>
+    <p class="switch">
+      Бүртгэлгүй юу?
       <a href="register.html">Бүртгүүлэх</a>
     </p>
   </div>
+</div>
+<script src="../login/auth.js"></script>
 </body>
 </html>

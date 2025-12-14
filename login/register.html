@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Бүртгүүлэх</title>
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
-<body>
-  <div class="auth-box">
+<body class="minii">
+<div class="auth-wrapper">
+  <div class="auth-card">
     <h2>Бүртгүүлэх</h2>
-    <input type="text" placeholder="Нэр">
-    <input type="email" placeholder="Имэйл">
-    <input type="password" placeholder="Нууц үг">
-    <button class="primary-btn">Бүртгүүлэх</button>
-    <p>Өмнө нь бүртгүүлсэн үү?
+    <input type="text" id="name" placeholder="Нэр">
+    <input type="email" id="email" placeholder="Имэйл">
+    <input type="password" id="password" placeholder="Нууц үг">
+    <input type="password" id="confirmPassword" placeholder="Нууц үгээ дахин оруулна уу">
+    <button onclick="register()">Бүртгүүлэх</button>
+    <p class="switch">
+      <span>Аль хэдийн бүртгэлтэй юу?</span>
       <a href="login.html">Нэвтрэх</a>
     </p>
   </div>
+</div>
+<script src="../login/auth.js"></script>
 </body>
 </html>

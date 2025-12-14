@@ -69,3 +69,8 @@ if (password !== confirmPassword) {
   })
   .catch(() => alert("Алдаа гарлаа"));
 }
+fetch("http://localhost:5000/forgot-password", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ email })
+});

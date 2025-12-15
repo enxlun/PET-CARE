@@ -11,8 +11,22 @@
     <h2>Бүртгүүлэх</h2>
     <input type="text" id="name" placeholder="Нэр">
     <input type="email" id="email" placeholder="Имэйл">
-    <input type="password" id="password" placeholder="Нууц үг">
-    <input type="password" id="confirmPassword" placeholder="Нууц үгээ дахин оруулна уу">
+    <input 
+  type="password" 
+  id="password" 
+  placeholder="Нууц үг"
+  onfocus="showRules()"
+  onkeyup="checkPassword()"
+>
+<div id="password-rules" class="password-rules">
+  <p id="rule-length">• Хамгийн багадаа 8 тэмдэг</p>
+  <p id="rule-uppercase">• Дор хаяж 1 том үсэг</p>
+</div>
+<input 
+  type="password"
+  id="confirmPassword"
+  placeholder="Нууц үгээ дахин оруулна уу"
+>
     <button onclick="register()">Бүртгүүлэх</button>
     <p class="switch">
       <span>Аль хэдийн бүртгэлтэй юу?</span>

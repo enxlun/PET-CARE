@@ -118,6 +118,118 @@
 .forgot-link:hover {
   text-decoration: underline;
 }
+.password-rules {
+  display: none;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.password-rules p {
+  margin: 4px 0;
+  color: #b45309;
+}
+.password-rules p.valid {
+  color: #16a34a;
+}
+/*Urchleh amitan nemeh*/
+.add{
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+.addd{
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff1e6, #ffd8b5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pet-wrapper {
+  width: 900px;
+  max-width: 95%;
+  background: #fff;
+  border-radius: 24px;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.pet-image {
+  width: 40%;
+  background: #f97316;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pet-image img {
+  width: 70%;
+  border-radius: 16px;
+}
+.pet-form {
+  width: 60%;
+  padding: 32px;
+}
+
+.pet-form h2 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.subtitle {
+  margin-bottom: 24px;
+  color: #555;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+}
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+.radio-group {
+  display: flex;
+  gap: 8px;
+}
+.radio-group button{
+  flex: 1;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #f97316;
+  background: #fff;
+  cursor: pointer;
+}
+.radio-group .active{
+  background: #f97316;
+  color: #fff;
+}
+.actions{
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+}
+.actions button{
+  padding: 10px 24px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.back{
+  background: #eee;
+}
+.next{
+  background: #f97316;
+  color: #fff;
+}
 
 
 

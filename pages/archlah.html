@@ -1,24 +1,33 @@
-<!DOCTYPE html>
-<html lang="mn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Арчлах үйлчилгээ - Амьтад Аврах</title>
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
   <style>
     /* Service Card */
     .service-card {
       background: rgba(255, 255, 255, 0.5);
       backdrop-filter: blur(10px);
       border-radius: 1rem;
-      padding: 2rem;
+      padding: 1.25rem;
+
+      width: 440px;
+      height: 440px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      text-align: center;
+
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(125, 206, 160, 0.2);
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
+    }
+
+    #servicesGrid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      justify-content: center;
     }
 
     .service-card:hover {
@@ -58,10 +67,12 @@
 
     .service-features {
       list-style: none;
-      margin-bottom: 1.5rem;
+      margin: 0;
+      padding: 0;
     }
 
     .service-features li {
+      list-style: none;
       font-size: 0.875rem;
       color: var(--foreground);
       padding: 0.5rem 0;
@@ -205,7 +216,7 @@
     .step-number {
       width: 48px;
       height: 48px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      background: linear-gradient(135deg, var(x--primary), var(--secondary));
       color: var(--primary-foreground);
       border-radius: 50%;
       display: flex;
@@ -274,7 +285,6 @@
   </style>
 </head>
 <body>
-  <!-- Main Content -->
   <main class="main-content">
     <div class="container">
 
@@ -351,7 +361,5 @@
       </div>
     </div>
   </main>
-  
-  <script src="../comp/archlah.js"></script>
 </body>
 </html>

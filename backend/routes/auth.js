@@ -1,79 +1,57 @@
-const express = require('express');
+const express = require("express");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
+
 const router = express.Router();
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
 
-// Бүртгүүлэх
-router.post('/register', async (req, res) => {
+const JWT_SECRET = process.env.JWT_SECRET || "dev_secret_change_me";
+
+router.post("/register", async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const name = String(req.body?.name || "").trim();
+    const email = String(req.body?.email || "").trim().toLowerCase();
+    const password = String(req.body?.password || "");
 
-    // Хэрэглэгч аль хэдийн бүртгэлтэй эсэхийг шалгах
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: 'И-мэйл аль хэдийн бүртгэлтэй байна' });
-    }
+    if (!email || !password) return res.status(400).json({ error: "email, password шаардлагатай" });
+    if (password.length < 6) return res.status(400).json({ error: "Нууц үг 6+ тэмдэгт байх ёстой" });
 
-    // Шинэ хэрэглэгч үүсгэх
-    const user = new User({ name, email, password });
-    await user.save();
+    const exists = await User.findOne({ email });
+    if (exists) return res.status(409).json({ error: "Энэ email бүртгэлтэй байна" });
 
-    // Token үүсгэх
-    const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: '7d' }
-    );
+    const passwordHash = await bcrypt.hash(password, 10);
+    const user = await User.create({ name, email, passwordHash });
 
-    res.status(201).json({
-      message: 'Амжилттай бүртгэгдлээ',
-      token,
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email
-      }
-    });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(201).json({ ok: true, user: { id: user._id, name: user.name, email: user.email } });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
-// Нэвтрэх
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const email = String(req.body?.email || "").trim().toLowerCase();
+    const password = String(req.body?.password || "");
 
-    // Хэрэглэгч байгаа эсэхийг шалгах
+    if (!email || !password) return res.status(400).json({ error: "email, password шаардлагатай" });
+
     const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(401).json({ message: 'И-мэйл буруу байна' });
-    }
+    if (!user) return res.status(400).json({ error: "Буруу email эсвэл нууц үг" });
 
-    // Нууц үг зөв эсэхийг шалгах
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
-      return res.status(401).json({ message: 'Нууц үг буруу байна' });
-    }
+    const ok = await bcrypt.compare(password, user.passwordHash);
+    if (!ok) return res.status(400).json({ error: "Буруу email эсвэл нууц үг" });
 
-    // Token үүсгэх
-    const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: '7d' }
-    );
+    const token = jwt.sign({ id: user._id, role: user.role }, JWT_SECRET, { expiresIn: "7d" });
 
     res.json({
-      message: 'Амжилттай нэвтэрлээ',
+      ok: true,
       token,
-      user: {
-        id: user._id,
-        name: user.name,
-        email: user.email
-      }
+      user: { id: user._id, name: user.name, email: user.email, role: user.role },
     });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ error: "Server error" });
   }
 });
 

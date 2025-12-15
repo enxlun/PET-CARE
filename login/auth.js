@@ -1,76 +1,59 @@
-const loginTab = document.getElementById("loginTab");
-const registerTab = document.getElementById("registerTab");
-const loginForm = document.getElementById("loginForm");
-const registerForm = document.getElementById("registerForm");
-loginTab.onclick = () => {
-  loginTab.classList.add("active");
-  registerTab.classList.remove("active");
+const API_BASE = "http://localhost:5000/api";
 
-  loginForm.classList.add("show");
-  registerForm.classList.remove("show");
-};
-registerTab.onclick = () => {
-  registerTab.classList.add("active");
-  loginTab.classList.remove("active");
-  registerForm.classList.add("show");
-  loginForm.classList.remove("show");
-};
-if (localStorage.getItem("token")) {
-  window.location.href = "../index.html";
-}
-function login() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const remember = document.getElementById("rememberMe").checked;
-
-  fetch("http://localhost:5000/login", {
+async function postJSON(url, body) {
+  const res = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.token) {
-      if (remember) {
-        // 🔐 төхөөрөмж дээр хадгална
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-      } else {
-        sessionStorage.setItem("token", data.token);
-      }
-      window.location.href = "../index.html";
-    } else {
-      alert(data.error);
-    }
+    body: JSON.stringify(body),
   });
+
+  const text = await res.text();
+  let data = {};
+  try { data = JSON.parse(text); } catch {}
+
+  if (!res.ok) {
+    throw new Error(data.error || `HTTP ${res.status}: ${text.slice(0, 120)}`);
+  }
+  return data;
 }
-function register() {
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  const confirmPassword = document.getElementById("confirmPassword").value;
-  if (!name || !email || !password || !confirmPassword) {
-    alert("Бүх талбарыг бөглөнө үү!");
-    return;
+
+// login.html -> onclick="login()"
+window.login = async function login() {
+  try {
+    const email = (document.getElementById("email")?.value || "").trim();
+    const password = document.getElementById("password")?.value || "";
+
+    if (!email || !password) return alert("❌ Имэйл болон нууц үгээ оруулна уу");
+
+    const data = await postJSON(`${API_BASE}/login`, { email, password });
+
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
+
+    alert("✅ Амжилттай нэвтэрлээ!");
+    window.location.href = "../index.html#home";
+  } catch (e) {
+    alert("❌ " + e.message);
   }
-if (password !== confirmPassword) {
-    alert("Нууц үг таарахгүй байна!");
-    return;
-  }
-  fetch("http://localhost:5000/register", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, password })
-  })
-  .then(res => res.json())
-  .then(data => {
-    alert("Бүртгэл амжилттай! Нэвтрэх хуудас руу шилжинэ.");
+};
+
+// register.html -> onclick="register()"
+window.register = async function register() {
+  try {
+    const name = (document.getElementById("name")?.value || "").trim();
+    const email = (document.getElementById("email")?.value || "").trim();
+    const password = document.getElementById("password")?.value || "";
+    const confirmPassword = document.getElementById("confirmPassword")?.value || "";
+
+    if (!email || !password) return alert("❌ Имэйл болон нууц үгээ оруулна уу");
+    if (password.length < 6) return alert("❌ Нууц үг 6+ тэмдэгт байх ёстой");
+    if (password !== confirmPassword) return alert("❌ Нууц үг таарахгүй байна");
+
+    await postJSON(`${API_BASE}/register`, { name, email, password });
+
+    alert("✅ Бүртгэл амжилттай! Одоо нэвтэрнэ үү.");
     window.location.href = "login.html";
-  })
-  .catch(() => alert("Алдаа гарлаа"));
-}
-fetch("http://localhost:5000/forgot-password", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ email })
-});
+  } catch (e) {
+    alert("❌ " + e.message);
+  }
+};

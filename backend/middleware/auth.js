@@ -1,21 +1,18 @@
-const jwt = require('jsonwebtoken');
+// backend/middleware/auth.js
+const jwt = require("jsonwebtoken");
 
-const authMiddleware = (req, res, next) => {
+module.exports = function auth(req, res, next) {
   try {
-    // Header-с token авах
-    const token = req.header('Authorization')?.replace('Bearer ', '');
+    const header = req.headers.authorization || "";
+    const token = header.startsWith("Bearer ") ? header.slice(7) : null;
 
-    if (!token) {
-      return res.status(401).json({ message: 'Нэвтэрнэ үү' });
-    }
+    if (!token) return res.status(401).json({ error: "Unauthorized (no token)" });
 
-    // Token-ийг шалгах
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded;
-    next();
-  } catch (error) {
-    res.status(401).json({ message: 'Token буруу байна' });
+    const payload = jwt.verify(token, process.env.JWT_SECRET || "dev_secret_change_me");
+    req.user = payload;
+
+    return next();
+  } catch (e) {
+    return res.status(401).json({ error: "Unauthorized (invalid token)" });
   }
 };
-
-module.exports = authMiddleware;

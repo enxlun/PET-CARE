@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
+
 
 const app = express();
 
@@ -15,7 +17,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/petcare")
 
 // test route
 app.get("/", (req, res) => {
-  res.send("PETCARE backend running 🐾");
+  res.send("PETCARE backend running ввв🐾");
 });
 
 // server
@@ -23,7 +25,7 @@ app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
 
-const authRoutes = require("./routes/authRoutes");
+const authRoutes = require("./routes/auth");
 app.use("/api", authRoutes);
 
 

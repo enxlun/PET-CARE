@@ -35,6 +35,11 @@ async function renderPage(page) {
     if (page === 'urchleh' && typeof initUrchlehPage === 'function') {
       initUrchlehPage();
     }
+
+    if (page === 'archlah' && typeof initArchlahPage === 'function') {
+      initArchlahPage();
+    }
+
     if (page === 'handiv' && typeof initHandivPage === 'function') {
       initHandivPage();
     }
@@ -44,6 +49,7 @@ async function renderPage(page) {
     console.error(err);
   }
 }
+
 
 function toggleMobileMenu() {
   const mobileMenu = document.getElementById('mobile-menu');
